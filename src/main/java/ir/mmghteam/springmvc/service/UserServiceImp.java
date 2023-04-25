@@ -40,15 +40,5 @@ public class UserServiceImp implements UserService {
         userDao.update(user);
     }
 
-    @Override
-    public User getUserById(Long id) {
-        return userDao.get(id);
-    }
-
-    @Override
-    @Transactional
-    public void deleteUserById(Long id) {
-        userDao.delete(userDao.get(id));
-    }
 
 }
