@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Locale;
@@ -41,4 +39,31 @@ public class UserController {
         userService.save(user);
         return "redirect:/";
     }
+    @RequestMapping("/deleteUser")
+    public String deleteUser(Long id, Model model) {
+        userService.delete(id);
+        return "redirect:/";
+    }
+    @GetMapping("/users/{id}/delete")
+    public String deleteUser(@PathVariable Long id) {
+        // delete user by id
+        userService.deleteUserById(id);
+
+        return "redirect:/";
+    }
+    @RequestMapping("/editUser")
+    public String editUser(Long id, Model model) {
+        model.addAttribute("user", userService.get(id));
+        return "editUsers";
+    }
+    @RequestMapping("/updateUser")
+    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("users", userService.list());
+            return "editUsers";
+        }
+        userService.update(user);
+        return "redirect:/";
+    }
+
 }

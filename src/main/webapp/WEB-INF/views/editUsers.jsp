@@ -49,17 +49,21 @@
         </tr>
     </table>
 </form:form>
-
 <h2>Users List</h2>
 <table>
     <tr>
         <td><strong>Name</strong></td>
         <td><strong>Email</strong></td>
+        <td><strong>?Action</strong></td>
     </tr>
     <c:forEach items="${users}" var="user">
         <tr>
             <td>${user.name}</td>
             <td>${user.email}</td>
+            <td>
+                <a href="${pageContext.request.contextPath}/users/${user.id}/edit">Update</a>
+                <a href="${pageContext.request.contextPath}/users/${user.id}/delete">Delete</a>
+            </td>
         </tr>
     </c:forEach>
 </table>

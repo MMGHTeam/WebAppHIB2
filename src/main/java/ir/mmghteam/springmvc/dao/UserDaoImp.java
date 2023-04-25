@@ -18,6 +18,19 @@ public class UserDaoImp implements UserDao {
     public void save(User user) {
         sessionFactory.getCurrentSession().save(user);
     }
+    @Override
+    public void update(User user) { sessionFactory.getCurrentSession().update(user);}
+    @Override
+    public void delete(User user) {
+        sessionFactory.getCurrentSession().delete(user);}
+
+    @Override
+    public User get(Long id) {
+        return sessionFactory.getCurrentSession().get(User.class, id);
+    }
+
+
+
 
     @Override
     public List<User> list() {

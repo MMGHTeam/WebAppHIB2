@@ -8,4 +8,14 @@ public interface UserService {
     void save(User user);
 
     List<User> list();
+
+    void delete(Long id);
+
+    Object get(Long id);
+
+    void update(User user);
+
+    User getUserById(Long id);
+
+    void deleteUserById(Long id);
 }
