@@ -9,7 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14f1ed6b-f47a-4c81-b4e9-95145d65553c" name="Changes" comment="ver 1.0.1 added delete functionality" />
+    <list default="true" id="14f1ed6b-f47a-4c81-b4e9-95145d65553c" name="Changes" comment="ver 1.0.1 added removed dup code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/dao/UserDaoImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/dao/UserDaoImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/service/UserServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mmghteam/springmvc/service/UserServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editUsers.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editUsers.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,6 +214,8 @@
       <workItem from="1682320197986" duration="4764000" />
       <workItem from="1682413574735" duration="3628000" />
       <workItem from="1682428329819" duration="4308000" />
+      <workItem from="1682436849040" duration="1680000" />
+      <workItem from="1682438850701" duration="5091000" />
     </task>
     <task id="LOCAL-00001" summary="ver 1.0.1 added delete functionality">
       <created>1682433517452</created>

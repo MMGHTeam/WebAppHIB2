@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Locale;
 
 @Controller
 public class UserController {
@@ -17,14 +16,18 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/")
-    public String userForm(Locale locale, Model model) {
+    public String userForm(Model model) {
         model.addAttribute("users", userService.list());
         return "editUsers";
     }
 
     @ModelAttribute("user")
-    public User formBackingObject() {
-        return new User();
+    public User formBackingObject(@PathVariable(required = false) Long id) {
+        if (id != null) {
+            return (User) userService.getById(id);
+        } else {
+            return new User();
+        }
     }
 
     @PostMapping("/addUser")
@@ -39,31 +42,36 @@ public class UserController {
         userService.save(user);
         return "redirect:/";
     }
+
     @RequestMapping("/deleteUser")
-    public String deleteUser(Long id, Model model) {
+    public String deleteUser(Long id) {
         userService.delete(id);
         return "redirect:/";
     }
-    @GetMapping("/users/{id}/delete")
-    public String deleteUser(@PathVariable Long id) {
-        // delete user by id
-        userService.deleteUserById(id);
 
+    @GetMapping("/users/{id}/delete")
+    public String deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
         return "redirect:/";
     }
-    @RequestMapping("/editUser")
-    public String editUser(Long id, Model model) {
-        model.addAttribute("user", userService.get(id));
+
+    @GetMapping("/users/{id}/update")
+    public String updateUserForm(@PathVariable Long id, Model model) {
+        model.addAttribute("user", userService.getById(id));
         return "editUsers";
     }
-    @RequestMapping("/updateUser")
-    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult result, Model model) {
+
+    @PostMapping("/users/{id}/update")
+    public String updateUser(@PathVariable Long id, @ModelAttribute("user") @Valid User user,
+                             BindingResult result, Model model) {
+
         if (result.hasErrors()) {
             model.addAttribute("users", userService.list());
             return "editUsers";
         }
-        userService.update(user);
+
+        user.setId(id);
+        userService.save(user);
         return "redirect:/";
     }
-
 }
