@@ -3,11 +3,13 @@ package ir.mmghteam.springmvc.controller;
 import ir.mmghteam.springmvc.model.User;
 import ir.mmghteam.springmvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
 import javax.validation.Valid;
 
 @Controller
@@ -42,6 +44,18 @@ public class UserController {
         userService.save(user);
         return "redirect:/";
     }
+    @PostMapping("/users/{id}/addUser")
+    public String saveUserAfterUpdate(@ModelAttribute("user") @Valid User user,
+                                      BindingResult result, Model model){
+        if (result.hasErrors()) {
+            model.addAttribute("users", userService.list());
+            return "editUsers";
+        }
+
+        userService.update(user);
+        return "redirect:/";
+
+    }
 
     @RequestMapping("/deleteUser")
     public String deleteUser(Long id) {
@@ -74,4 +88,5 @@ public class UserController {
         userService.save(user);
         return "redirect:/";
     }
+
 }
