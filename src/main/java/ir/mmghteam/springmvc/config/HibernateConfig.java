@@ -12,14 +12,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-@Configuration
-@EnableTransactionManagement
+@Configuration //Spring config indicator
+@EnableTransactionManagement //Spring transaction management indicator
 public class HibernateConfig {
-    @Autowired
+    @Autowired //Injecting into the class
     private ApplicationContext context;
 
     @Bean
-    public DataSource getDataSource() {
+    public DataSource getDataSource() // This method will establish the connection to the DB using JDBC
+    {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
         dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:ORCL");
@@ -28,16 +29,18 @@ public class HibernateConfig {
         return dataSource;
     }
     @Bean
-    public LocalSessionFactoryBean getSessionFactory() {
+    public LocalSessionFactoryBean getSessionFactory() // Initializing Hibernate in the application
+    {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setDataSource(getDataSource());
+        factoryBean.setDataSource(getDataSource()); //Using JDBC to enable DB connection for Beans
         factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-        factoryBean.setAnnotatedClasses(User.class);
+        factoryBean.setAnnotatedClasses(User.class); //Entity class User provided in the model package
         return factoryBean;
     }
 
     @Bean
-    public HibernateTransactionManager getTransactionManager() {
+    public HibernateTransactionManager getTransactionManager() //Transactions are interactions with the DB
+    {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(getSessionFactory().getObject());
         return transactionManager;

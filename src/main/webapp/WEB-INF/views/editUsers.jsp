@@ -15,7 +15,7 @@
         table {
             width: 50%;
             border-collapse: collapse;
-            border-spacing: 0px;
+            border-spacing: 0;
         }
 
         table td {
@@ -54,7 +54,7 @@
     <tr>
         <td><strong>Name</strong></td>
         <td><strong>Email</strong></td>
-        <td><strong>?Action</strong></td>
+        <td><strong>Action</strong></td>
     </tr>
     <c:forEach items="${users}" var="user">
         <tr>

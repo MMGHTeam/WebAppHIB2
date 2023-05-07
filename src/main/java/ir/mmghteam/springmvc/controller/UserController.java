@@ -26,7 +26,7 @@ public class UserController {
     @ModelAttribute("user")
     public User formBackingObject(@PathVariable(required = false) Long id) {
         if (id != null) {
-            return (User) userService.getById(id);
+            return userService.getById(id);
         } else {
             return new User();
         }

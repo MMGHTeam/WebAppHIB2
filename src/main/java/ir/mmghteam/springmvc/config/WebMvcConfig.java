@@ -14,7 +14,8 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"ir.mmghteam.springmvc"})
+@ComponentScan(basePackages = {"ir.mmghteam.springmvc"}) // Scans the package to find
+                                                         // components like controllers and services
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Bean
@@ -26,8 +27,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+    /*
     @Bean
-    public MessageSource messageSource() {
+     public MessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
         source.setBasename("messages");
         return source;
@@ -39,4 +41,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         validator.setValidationMessageSource(messageSource());
         return validator;
     }
+    */
+
 }
